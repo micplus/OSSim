@@ -281,7 +281,20 @@ std::string Manager::request(std::string& name, int count) {
                 schedule();
                 return getProcState(runProc) + ".  " + getProcState(reqProc);
             }
-            runProc->usingResource.addLast(Process::UsingRes(res[i], count));
+            Node<Process::UsingRes>* pBack = runProc->usingResource.head;
+            Node<Process::UsingRes>* pFront = pBack->next;
+            bool flag = false;
+            while (pFront) {
+                if (pFront->data.useRes->getName() == name) {
+                    pFront->data.useCount += count;
+                    flag = true;
+                }
+                pBack = pFront;
+                pFront = pFront->next;
+            }
+            if (!flag) {
+                runProc->usingResource.addLast(Process::UsingRes(res[i], count));
+            }
             res[i]->idle -= count;
 
             return "process " + runProc->getName() + " requests " + std::to_string(count) + " " + res[i]->getName();
