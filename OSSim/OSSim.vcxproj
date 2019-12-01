@@ -115,6 +115,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="linkedlist.h" />
+    <ClInclude Include="manager.h" />
+    <ClInclude Include="process.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="shell.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="manager.cpp" />
+    <ClCompile Include="process.cpp" />
+    <ClCompile Include="resource.cpp" />
+    <ClCompile Include="shell.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
